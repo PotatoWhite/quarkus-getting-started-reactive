@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class ReactiveGreetingResourceTest {
 
   @Test
-  void helloTest(){
+  void helloTest() {
     given().get(ReactiveGreetingResource.ROOT_PATH)
            .then()
            .statusCode(Status.OK.getStatusCode())
@@ -20,11 +20,22 @@ class ReactiveGreetingResourceTest {
   }
 
   @Test
-  void greetingTest(){
+  void greetingTest() {
     given().pathParam("name", "potato")
-        .get(ReactiveGreetingResource.ROOT_PATH + ReactiveGreetingResource.GREETING_PATH + "/{name}")
+           .get(ReactiveGreetingResource.ROOT_PATH + ReactiveGreetingResource.GREETING_PATH + "/{name}")
            .then()
            .statusCode(Status.OK.getStatusCode())
+           .body(containsStringIgnoringCase("potato"));
+  }
+
+  @Test
+  void greetingsTest() {
+    given().pathParam("count", 10)
+           .pathParam("name", "potato")
+           .get(ReactiveGreetingResource.ROOT_PATH + ReactiveGreetingResource.GREETING_PATH + "/{count}/{name}")
+           .then()
+           .statusCode(Status.OK.getStatusCode())
+           .body(containsStringIgnoringCase("9"))
            .body(containsStringIgnoringCase("potato"));
   }
 }

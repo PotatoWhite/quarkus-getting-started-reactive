@@ -1,0 +1,4 @@
+GET localhost:8080/hello/greeting/10/potato
+
+###
+GET localhost:8080/hello/stream/10/potato

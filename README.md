@@ -46,3 +46,10 @@ If you want to learn more about building native executables, please consult http
 # Command Mode
 
 Guide: https://quarkus.io/guides/command-mode-reference
+
+
+# 다좋은데
+docker build가 좀 귀찮음 편한 방법이 있을 
+```shell script
+docker build -f src/main/docker/Dockerfile.native -t quarkus-getting-started-reactive:0.1 .
+```
